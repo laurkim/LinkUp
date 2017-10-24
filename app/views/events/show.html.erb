@@ -1,1 +1,16 @@
-<h1>Individual Event Show Page</h1>
+<div class="header">
+  <%= link_to "Back to Search Results", search_results_path %>
+  <%= link_to "Create a new search", events_path %>
+</div>
+
+<div class="spotlight">
+  <img src="<%= @event.image_url %>" alt="">
+  <h2><%= @event.name %></h2>
+  <h4>Start Time: <%= @event.start_time %></h3>
+  <h4>End Time: <%= @event.end_time %></h3>
+
+  <h4>Description:</h4>
+  <p><%= @event.description %></p>
+
+  <h4><%= link_to "Link to EventBrite Page", @event.url %></h4>
+</div>
