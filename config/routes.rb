@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   get '/', to: 'welcome#home', as: 'root'
+  post '/', to: 'sessions#new'
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
   get '/signup', to: 'users#new', as: 'signup'
-  get '/users/:id', to: 'users#show'
+  post '/users', to: 'users#create'
+  get '/users/:id', to: 'users#show', as: 'user'
 
   get '/events', to: 'events#index'
   post '/events', to: 'events#search'
