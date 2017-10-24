@@ -7,6 +7,9 @@ class EventsController < ApplicationController
   end
 
   def create
+    # reset event cookies
+    session.delete :event_ids
+
     # connect to EventBriteAdapter
     query = {
       search_keyword: event_params[:search_keyword],
@@ -21,10 +24,11 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find_by(id: params[:id])
   end
 
   def search
-    @matching_events = session[:event_ids].collect { |event_id| Event.find(id: event_id) }
+    @matching_events = session[:event_ids].collect { |event_id| Event.find_by(id: event_id) }.sort_by {|event| event.start_time }
   end
 
   private

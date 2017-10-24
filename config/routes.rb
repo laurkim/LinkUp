@@ -11,10 +11,8 @@ Rails.application.routes.draw do
 
   get '/events', to: 'events#index'
   post '/events', to: 'events#create'
-
   get '/events/search', to: 'events#search', as: 'search_results'
-
-  get '/events/:id', to: 'events#show'
+  get '/events/:id', to: 'events#show', as: 'event'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
