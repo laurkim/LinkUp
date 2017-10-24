@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024135618) do
+ActiveRecord::Schema.define(version: 20171024204927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "event_id"
+    t.bigint "user_id"
+    t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "event_users", force: :cascade do |t|
     t.bigint "event_id"
@@ -36,19 +44,6 @@ ActiveRecord::Schema.define(version: 20171024135618) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "groups", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_groups", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "group_id"
-    t.index ["group_id"], name: "index_user_groups_on_group_id"
-    t.index ["user_id"], name: "index_user_groups_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
@@ -64,8 +59,8 @@ ActiveRecord::Schema.define(version: 20171024135618) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users"
   add_foreign_key "event_users", "events"
   add_foreign_key "event_users", "users"
-  add_foreign_key "user_groups", "groups"
-  add_foreign_key "user_groups", "users"
 end
