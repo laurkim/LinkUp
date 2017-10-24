@@ -2,11 +2,7 @@ class EventsController < ApplicationController
 
   before_action :set_event, only: [:show]
   def index
-    @events = Event.all
-  end
-
-  def new
-    @event = Event.new
+    @events = Event.new
   end
 
   def create
@@ -19,6 +15,12 @@ class EventsController < ApplicationController
   end
 
   def show
+  end
+
+  def search
+    binding.pry
+    event_params = { search_keyword: "halloween", zipcode: 10016, radius: 4, price: "free", start_date: "this_week" }
+
   end
 
   private
