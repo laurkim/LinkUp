@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show'
 
   get '/events', to: 'events#index'
-  post '/events', to: 'events#search'
+  post '/events', to: 'events#create'
+
+  get '/events/search', to: 'events#search', as: 'search_results'
 
   get '/events/:id', to: 'events#show'
 

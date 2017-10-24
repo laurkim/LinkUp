@@ -15,18 +15,18 @@
     <p>
 
     <p>
-      <%= label_tag :radius %>
+      <%= label_tag "Radius (Miles): " %>
       <%= text_field_tag :'event[radius]' %>
     <p>
 
     <p>
-      <%= label_tag :price %>
-      <%= text_field_tag :'event[price]' %>
+      <%= label_tag "Only Free Events?: " %>
+      <%= check_box_tag :'event[free]' %>
     <p>
 
     <p>
-      <%= label_tag :start_date %>
-      <%= text_field_tag :'event[start_date]' %>
+      <%= label_tag "Start Date: " %>
+      <%= select_tag :'event[start_date]', options_for_select(@timing), include_blank: true %>
     <p>
 
     <p>

@@ -31,7 +31,7 @@ class EventBriteAdapter
 
   def create_event_objects
     parsed_data = self.get_events_hash
-    parsed_data.each do |event_hash|
+    parsed_data.collect do |event_hash|
       hash = {}
       hash[:name] = event_hash["name"]["text"]
       hash[:event_brite_id] = event_hash["id"]

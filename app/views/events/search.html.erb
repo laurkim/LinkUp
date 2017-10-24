@@ -1,0 +1,10 @@
+<h1>Results from Event Query</h1>
+
+
+<% @matching_events.each do |event| %>
+
+  <div class="matching_events">
+    <h3><%= link_to event.name, event.url %></h3>
+  </div>
+
+<% end %>
