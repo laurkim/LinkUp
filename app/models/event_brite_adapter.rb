@@ -9,7 +9,7 @@ class EventBriteAdapter
   attr_accessor :search_keyword, :zipcode, :radius, :price, :start_date, :venue_id
   TOKEN = "5CCFIIFLIPFQUNLDYOES"
   EVENT_ROUTE = "https://www.eventbriteapi.com/v3/events/search/?q="
-  VENUE_ROUTE = "https://www.eventbriteapi.com/v3/events/"
+  VENUE_ROUTE = "https://www.eventbriteapi.com/v3/venues/"
 
   def initialize(search_keyword:, zipcode:, radius:, price:, start_date:)
     @search_keyword = search_keyword
@@ -31,7 +31,7 @@ class EventBriteAdapter
 
   def create_event_objects
     parsed_data = self.get_events_hash
-    parsed_data.collect do |event_hash|
+    parsed_data.each do |event_hash|
       hash = {}
       hash[:name] = event_hash["name"]["text"]
       hash[:event_brite_id] = event_hash["id"]
@@ -39,18 +39,20 @@ class EventBriteAdapter
       hash[:description] = event_hash["description"]["text"]
       hash[:start_time] = event_hash["start"]["local"]
       hash[:end_time] = event_hash["end"]["local"]
-      hash[:image_url] = event_hash["logo"]["url"]
+      hash[:image_url] = ( event_hash["logo"] == nil ? nil : event_hash["logo"]["url"] )
       hash[:free] = event_hash["is_free"]
 
       @venue_id = event_hash["venue_id"]
       venue = self.find_or_create_venue_object
-      venue.events << Event.create(hash)
+      hash[:venue_id] = venue.id
+
+      Event.create(hash)
     end
   end
 
   # VENUE RELATED API METHODS
   def venue_route
-    "#{VENUE_ROUTE}#{@venue_id}&token=#{TOKEN}"
+    "#{VENUE_ROUTE}#{@venue_id}/?token=#{TOKEN}"
   end
 
   def get_venue_hash
@@ -67,7 +69,3 @@ class EventBriteAdapter
     end
   end
 end
-
-# event_params = { search_keyword: "halloween", zipcode: 10016, radius: 4, price: "free", start_date: "this_week" }
-# testing = EventBriteAdapter.new(event_params)
-# testing.create_event_objects

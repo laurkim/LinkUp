@@ -9,8 +9,6 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       t.datetime :end_time
       t.string :image_url
       t.boolean :free
-      t.integer :user_id
-      t.integer :group_id
       t.integer :venue_id
 
       t.timestamps
