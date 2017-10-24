@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get '/', to: 'application#hello', as: 'root'
+  get '/', to: 'welcome#home', as: 'root'
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
+  post '/logout' => 'sessions#destroy'
 
   get '/signup', to: 'users#new', as: 'signup'
   get '/users/:id', to: 'users#show'

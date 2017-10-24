@@ -1,3 +1,7 @@
 <h1>User Profile Page</h1>
 
 <%= link_to "Search for an event near you!", events_path %>
+
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>
