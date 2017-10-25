@@ -24,14 +24,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(id: params[:id])
     @comments = @event.comments.sort_by { |comment| comment.likes }
   end
 
   def search
     @matching_events = session[:event_ids].collect { |event_id| Event.find_by(id: event_id) }.sort_by {|event| event.start_time }
   end
-  
+
   private
 
     def set_event

@@ -1,4 +1,13 @@
-<h1>User Profile Page</h1>
+<h1><%= @user.name.titleize %>'s Profile Page</h1>
+
+<p>Your Saved Events: </p>
+  <ul>
+    <% @user.events.each do |event| %>
+      <li>link_to event.name, event_path(event)</li>
+    <% end %>
+  </ul>
+
+<br></br>
 
 <%= link_to "Search for an event near you!", events_path %>
 
