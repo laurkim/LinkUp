@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-5.times do
-  Fabricate(:user)
-end
+# 5.times do
+#   Fabricate(:user)
+# end
 
 laura = User.create(name: "Laura", username: "laura", password_digest: "password")

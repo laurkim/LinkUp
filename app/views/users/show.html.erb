@@ -1,5 +1,8 @@
 <h1><%= @user.name.titleize %>'s Profile Page</h1>
 
+<strong>Profile Picture:</strong>
+<%= image_tag @user.image.thumb %>
+
 <p>Your Saved Events: </p>
   <ul>
     <% @user.events.each do |event| %>
@@ -9,16 +12,7 @@
 
 <br></br>
 
-<p>Upload a Profile Picture: </p>
-  <div class="field">
-    <%= f.label :avatar %><br>
-    <%= f.file_field :avatar %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-<%= link_to "Search for an event near you!", events_path %>
+<%= link_to "Search for an event near you!", events_path %><br>
 
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>

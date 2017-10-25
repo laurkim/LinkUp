@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     return redirect_to controller: 'users', action: 'new' unless @user.save
     session[:user_id] = @user.id
-    redirect_to controller: 'welcome', action: 'home'
+    redirect_to login_path
   end
 
   def show
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :username, :password, :password_confirmation)
+      params.require(:user).permit(:name, :username, :password, :password_confirmation, :image, :remove_image)
     end
 
 end
