@@ -30,16 +30,6 @@
   }
 }
 
-@media (max-width: 767px) {
-  .fullscreen-bg {
-    background: url('../img/videoframe.jpg') center center / cover no-repeat;
-  }
-
-  .video {
-    display: none;
-  }
-}
-
 article {
   position: absolute;
   top: 0;
