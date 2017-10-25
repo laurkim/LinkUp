@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.2'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -60,7 +61,5 @@ gem 'pry'
 gem 'require_all'
 gem 'activerecord'
 gem 'pry-rescue'
-gem 'fabrication'
-gem 'faker'
 gem 'carrierwave', '~> 1.0.0'
 gem 'mini_magick', '~> 4.3'
