@@ -26,21 +26,22 @@
 <div class="event_comments">
   <h2>Comments</h2>
 
-  <% @comments.each do |comment| %>
-  <div class="single">
-    <div class="upvote">
-      <a href="/comments/upvote">
-        <span class="glyphicon glyphicon-triangle-top"></span>
-      </a>
-      <a href="#">
-        <span class="glyphicon glyphicon-triangle-bottom"></span>
-      </a>
-      <b><%= comment.likes.where("active = ?", true).count %> Likes</b>
-    </div>
-    <div class="content">
-      <b><%= comment.user.name %> : </b><%= comment.content %>
-    </div>
-  </div>
+  <% if !(@comments.empty?) %>
+    <% @comments.each do |comment| %>
+      <div class="single">
+
+        <div class="upvote">
+          <%= link_to content_tag(:span), { controller: "likes", action: "create", like: { user_id: session[:user_id], comment_id: comment.id, active: 'true'}, event_id: @event.id }, method: "post", class: "glyphicon glyphicon-triangle-top #{check_if_clicked(comment, session[:user_id], true)}" %>
+          <%= link_to content_tag(:span), { controller: "likes", action: "create", like: { user_id: session[:user_id], comment_id: comment.id, active: 'false' }, event_id: @event.id }, method: "post", class: "glyphicon glyphicon-triangle-bottom #{check_if_clicked(comment, session[:user_id], false)}" %>
+          <b><%= comment.likes.where("active = ?", true).count %> Likes</b>
+        </div>
+
+        <div class="content">
+          <b><%= comment.user.name %> : </b><%= comment.content %>
+        </div>
+
+      </div>
+    <% end %>
   <% end %>
 
   <div class="">
@@ -53,5 +54,4 @@
       <%= submit_tag "Post Comment" %>
     <% end %>
   </div>
-
 </div>
