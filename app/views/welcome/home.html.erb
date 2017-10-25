@@ -1,3 +1,19 @@
-<%= video_tag "landing.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "video" %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LinkUp</title>
+    <script src="js/jquery.vide.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/video_style.css" />
+    </div>
+  </head>
+  <body>
+    <%= video_tag "landing.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "video" %>
 
-<%= button_to "Log In", url: '/login'%>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+    <article>
+      <h1>Welcome to LINKUP<br /><span><a href="<%= login_path %>" target="_blank">Log In</a></span></h1>
+    </article>
+
+  </body>
+</html>

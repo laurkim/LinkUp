@@ -24,7 +24,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(id: params[:id])
+    # this is already set in a private method.
+    # @event = Event.find_by(id: params[:id])
   end
 
   def search

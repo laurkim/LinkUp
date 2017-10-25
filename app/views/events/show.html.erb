@@ -13,4 +13,12 @@
   <p><%= @event.description %></p>
 
   <h4><%= link_to "Link to EventBrite Page", @event.url %></h4>
+  <h4><%= link_to "Add Event to Profile", user_path(@user) %></h4>
+</div>
+
+
+<div class="round" style="text-align: right;">
+  <% @event.users.each do |user| %>
+    <img src="<%= user.prof_pic_url %>" alt="profile picture">
+  <% end %>
 </div>
