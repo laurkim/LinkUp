@@ -60,3 +60,6 @@ gem 'pry'
 gem 'require_all'
 gem 'activerecord'
 gem 'pry-rescue'
+
+gem 'fabrication'
+gem 'faker'

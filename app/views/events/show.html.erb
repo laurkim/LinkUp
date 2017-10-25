@@ -14,3 +14,21 @@
 
   <h4><%= link_to "Link to EventBrite Page", @event.url %></h4>
 </div>
+
+<div class="event_comments">
+  <h2>Comments</h2>
+  <ul>
+    <% @comments.each do |comment| %>
+    <li><%= comment.likes %> - <%= comment.user.name %> - <%= comment.content %></li>
+    <% end %>
+  </ul>
+
+  <%= form_tag comments_path do %>
+    <%= hidden_field_tag :'comment[user_id]', session[:user_id] %>
+    <%= hidden_field_tag :'comment[event_id]', @event.id %>
+    <p>
+      <%= text_area_tag :'comment[content]' %>
+    </p>
+    <%= submit_tag "Post Comment" %>
+  <% end %>
+</div>

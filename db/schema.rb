@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20171024204927) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
+    t.integer "likes", default: 0
     t.bigint "event_id"
     t.bigint "user_id"
     t.index ["event_id"], name: "index_comments_on_event_id"
