@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 5.times do
-  Fabricate(:comment)
+  Fabricate(:user)
 end
