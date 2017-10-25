@@ -9,6 +9,15 @@
 
 <br></br>
 
+<p>Upload a Profile Picture: </p>
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
 <%= link_to "Search for an event near you!", events_path %>
 
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
