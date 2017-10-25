@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20171025144728) do
     t.string "content"
     t.bigint "event_id"
     t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_comments_on_event_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -58,7 +60,6 @@ ActiveRecord::Schema.define(version: 20171025144728) do
     t.string "name"
     t.string "username"
     t.string "password_digest"
-    t.string "prof_pic_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
