@@ -21,8 +21,9 @@ class UsersController < ApplicationController
   end
 
   def event
-    byebug
-    set_user
+    EventUser.create(event_id: params[:id], user_id: session[:user_id])
+    @user = User.find_by(id: session[:user_id])
+    redirect_to user_path(@user)
   end
 
   private
