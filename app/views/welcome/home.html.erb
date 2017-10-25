@@ -7,7 +7,10 @@
     </div>
   </head>
   <body>
-    <%= video_tag "landing.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "video" %>
+    <div class="fullscreen-bg">
+      <%= video_tag "landing.mp4", autoplay: :autoplay, :loop => true, class: "video" %>
+    </div>
+
 
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 

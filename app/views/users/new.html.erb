@@ -2,16 +2,29 @@
 
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name %><br>
 
   <%= f.label :username %>
-  <%= f.text_field :username %>
+  <%= f.text_field :username %><br>
 
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password %><br>
 
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.password_field :password_confirmation %><br>
 
-  <%= f.submit "create" %>
+  <p>Upload a Profile Picture: </p>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+    <% if f.object.image? %>
+      <%= image_tag f.object.image.thumb %>
+      <%= f.label :remove_image %>
+      <%= f.check_box :remove_image %>
+    <% end %>
+  </div>
+
+  <br></br>
+
+  <%= f.submit "Create Account" %>
 <% end %>
