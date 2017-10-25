@@ -42,6 +42,11 @@ div.upvote {
   vertical-align: top;
   text-align: left;
 }
+
+.orange {
+  color: orange;
+}
+
 div.content {
   display: inline-block;
   text-align: left;
@@ -73,11 +78,6 @@ figure {
   height: 250px;
   background-color: white;
   overflow: hidden;
-}
-
-
-div.small:hover {
-  border: 0.2em solid rgb(7, 67, 102);
 }
 
 .round {

@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :comments
 
+  has_many :likes
+  
   mount_uploader :image, ImageUploader
 
   has_secure_password

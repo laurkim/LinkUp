@@ -46,7 +46,7 @@ class EventBriteAdapter
       venue = self.find_or_create_venue_object
       hash[:venue_id] = venue.id
 
-      Event.create(hash)
+      Event.find_or_create_by(hash)
     end
   end
 
