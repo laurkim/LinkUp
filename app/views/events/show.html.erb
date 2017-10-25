@@ -13,7 +13,7 @@
   <p><%= @event.description %></p>
 
   <h4><%= link_to "Link to EventBrite Page", @event.url %></h4>
-  <h4><%= link_to "Add Event to Profile", user_path(@user) %></h4>
+  <h4><%= link_to "Add Event to Profile", user_event_path(@user), method: 'post' %></h4>
 </div>
 
 

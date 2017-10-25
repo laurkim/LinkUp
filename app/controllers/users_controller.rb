@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :event]
   def index
     @users = User.all
   end
@@ -17,6 +17,12 @@ class UsersController < ApplicationController
   end
 
   def show
+
+  end
+
+  def event
+    byebug
+    set_user
   end
 
   private
