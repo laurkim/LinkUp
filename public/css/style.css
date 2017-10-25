@@ -24,6 +24,31 @@ div.spotlight {
   overflow: hidden;
 }
 
+div.event_comments {
+  width: 700px;
+  max-height: auto;
+  background-color: linen;
+}
+
+div.single {
+  display: block;
+  text-align: left;
+  max-width: 100%;
+  background-color: linen;
+}
+
+div.upvote {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
+div.content {
+  display: inline-block;
+  text-align: left;
+  max-width: 500px;
+  background-color: linen;
+}
+
 img {
   display: inline-block;
   max-width: 100%;

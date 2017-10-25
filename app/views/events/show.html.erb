@@ -25,18 +25,33 @@
 
 <div class="event_comments">
   <h2>Comments</h2>
-  <ul>
-    <% @comments.each do |comment| %>
-    <li><%= comment.likes %> - <%= comment.user.name %> - <%= comment.content %></li>
-    <% end %>
-  </ul>
 
-  <%= form_tag comments_path do %>
-    <%= hidden_field_tag :'comment[user_id]', session[:user_id] %>
-    <%= hidden_field_tag :'comment[event_id]', @event.id %>
-    <p>
-      <%= text_area_tag :'comment[content]' %>
-    </p>
-    <%= submit_tag "Post Comment" %>
+  <% @comments.each do |comment| %>
+  <div class="single">
+    <div class="upvote">
+      <a href="/comments/upvote">
+        <span class="glyphicon glyphicon-triangle-top"></span>
+      </a>
+      <a href="#">
+        <span class="glyphicon glyphicon-triangle-bottom"></span>
+      </a>
+      <b><%= comment.likes.where("active = ?", true).count %> Likes</b>
+    </div>
+    <div class="content">
+      <b><%= comment.user.name %> : </b><%= comment.content %>
+    </div>
+  </div>
   <% end %>
+
+  <div class="">
+    <%= form_tag comments_path do %>
+      <%= hidden_field_tag :'comment[user_id]', session[:user_id] %>
+      <%= hidden_field_tag :'comment[event_id]', @event.id %>
+      <p>
+        <%= text_area_tag :'comment[content]' %>
+      </p>
+      <%= submit_tag "Post Comment" %>
+    <% end %>
+  </div>
+
 </div>
