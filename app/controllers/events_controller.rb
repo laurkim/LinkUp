@@ -24,7 +24,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @comments = @event.comments.sort_by { |comment| comment.likes }
+    @comments = @event.comments.sort_by { |comment| comment.content }
   end
 
   def search
