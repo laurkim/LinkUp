@@ -6,8 +6,9 @@
 
   <div class="search_results">
     <img src="<%= event.image_url %>">
-    <h4><%= link_to event.name, event_path(event.id) %></h4>
-    <h4><%= event.start_time %></h4>
+    <h5><%= link_to event.name, event_path(event.id) %></h5>
+    <h5><%= event.start_time.strftime("%a - %m/%d/%Y - %I:%M %p") %></h5>
+    <h5>Solo Attendees: <%= "#{event.users.count}" %></h5>
   </div>
 
 <% end %>

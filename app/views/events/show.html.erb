@@ -6,8 +6,8 @@
 <div class="spotlight">
   <img src="<%= @event.image_url %>" alt="">
   <h2><%= @event.name %></h2>
-  <h4>Start Time: <%= @event.start_time %></h3>
-  <h4>End Time: <%= @event.end_time %></h3>
+  <h4>Start Time: <%= @event.start_time.strftime("%a - %m/%d/%Y - %I:%M %p") %></h3>
+  <h4>End Time: <%= @event.end_time.strftime("%a - %m/%d/%Y - %I:%M %p") %></h3>
 
   <h4>Description:</h4>
   <p><%= @event.description %></p>
