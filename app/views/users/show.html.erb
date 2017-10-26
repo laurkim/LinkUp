@@ -1,3 +1,12 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://groupies-assemble.herokuapp.com/">
+      <img src="https://i.imgur.com/EWgsyFb.png" alt="LinkUp: Connect with Other Solo Concert Attendees" width="40" height="40">
+    </a>
+
+  </div>
+</nav>
+
 <h1><%= @user.name.titleize %>'s Profile Page</h1>
 
 <strong>Profile Picture:</strong>
@@ -14,6 +23,9 @@
 
 <%= link_to "Search for an event near you!", events_path %><br>
 
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
-<% end %>
+
+<a class="button is-primary is-outlined">
+  <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+    <input type=submit value='Logout'>
+  <% end %>
+</a>
