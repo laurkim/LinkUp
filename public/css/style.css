@@ -15,16 +15,20 @@ div.is-ancestor {
   justify-content :center;
 }
 
-.red {
-  color: red;
+div.content {
+  max-width: 550px;
 }
 
-#inner {
-  width: 50%;
-  margin: 0 auto;
+.red {
+  color: red;
 }
 
 .ext_button_padding {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+#inner {
+  width: 50%;
+  margin: 0 auto;
 }

@@ -1,16 +1,17 @@
+<div class="level"></div>
+
 <div class="tile is-ancestor">
   <!-- First 1/2 -->
   <!-- User administrative info -->
-  <div class="tile is-parent">
+  <div class="tile is-parent is-5 is-vertical">
     <div class="tile is-child">
-      <!-- Content for right tile -->
-      <div class="level"></div>
-      <p class="title"><%= @user.name.titleize %>'s Profile Page</p>
+      <!-- Content for left tile -->
+      <p class="title">Welcome <%= @user.name.titleize %>!</p>
+      <br>
       <p class="subtitle"><strong>Name: </strong><%= @user.name.titleize %></p>
       <p class="subtitle"><strong>Profile Picture:</strong></p>
       <!-- Div to nest user profile image under profile picture subtitle -->
       <div class="content">
-        <%= image_tag @user.image.thumb.url %>
       </div>
       <!-- Log out form -->
       <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
@@ -24,24 +25,58 @@
 
   <!-- This tile will take the rest 1/2 -->
   <!-- User's saved events -->
-  <div class="tile is-parent is-6">
-    <div class="tile is-child">
-      <!-- Content for left tile -->
-      <article class="tile is-child notification is-white">
-          <!-- Put any content you want -->
-          <div class="level"></div>
-          <%= link_to "Search for an event near you!", events_path %>
+  <div class="tile is-parent is-5 is-vertical">
+    <!-- Content for right tile -->
+    <div class="tile is-child is-white">
+      <!-- Put any content you want -->
+      <div class="level">
+        <p class="title"><strong>Your Upcoming Events:</strong></p>
+      </div>
 
-          <br></br>
+        <% @user.events.each do |event| %>
+        <div class="level">
 
-          <p class="title"><p><strong>Your Upcoming Events:</strong></p><br>
-          <ul>
-            <% @user.events.each do |event| %>
-            <li><%= link_to event.name, event_path(event) %></li><br>
-            <% end %>
-          </ul>
-          <!-- End of content for left tile -->
-        </article>
+          <div class="level-left">
+            <div class="level-item has-text-left">
+              <%= form_tag user_event_path(session[:user_id]), method: "delete" do %>
+                <%= hidden_field_tag "event_id", event.id %>
+                <button class="button is-small" style="border:none;">
+                  <span class="icon has-text-danger">
+                    <i class="fa fa-times-circle"></i>
+                  </span>
+                </button>
+              <% end %>
+              <label><%= link_to event.name, event_path(event) %></label>
+            </div>
+          </div>
+
+          <div class="level-right">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Start Time</p>
+                <p class="title"><%= event.start_time.strftime("%m/%d") %></p>
+                <p class="heading has-text-weight-light is-size-7"><%= event.start_time.strftime("%I:%M %p") %></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">End Time</p>
+                <p class="title"><%= event.end_time.strftime("%m/%d") %></p>
+                <p class="heading has-text-weight-light is-size-7"><%= event.end_time.strftime("%I:%M %p") %></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Total</p>
+                <p class="title"><%= event.users.count %></p>
+                <p class="heading has-text-weight-light is-size-7">GROUPIES</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+      <!-- End of content for right tile -->
     </div>
     <!-- End of left tile -->
   </div>

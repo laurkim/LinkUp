@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'user'
   post '/users/:id', to: 'users#event', as: 'user_event'
+  delete '/users/:id', to: 'users#delete_association'
 
   get '/events', to: 'events#index'
   post '/events', to: 'events#create'
   get '/events/search', to: 'events#search', as: 'search_results'
   get '/events/:id', to: 'events#show', as: 'event'
-
 
   post '/comments', to: 'comments#create'
 
