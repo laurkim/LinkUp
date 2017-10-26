@@ -15,7 +15,7 @@
  </div>
 <% end %>
 
-<%= form_for @user, controller: 'users', action: 'create' do |f| %>
+<%= form_for @user, controller: 'users', action: 'create', :html => {:multipart => true} do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br>
 
@@ -33,7 +33,7 @@
     <%= f.label :image %><br>
     <%= f.file_field :image %>
     <% if f.object.image? %>
-      <%= image_tag f.object.image.thumb %>
+      <%= image_tag f.object.image.thumb.url %>
       <%= f.label :remove_image %>
       <%= f.check_box :remove_image %>
     <% end %>
