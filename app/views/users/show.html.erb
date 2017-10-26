@@ -1,22 +1,31 @@
-<h1><%= @user.name.titleize %>'s Profile Page</h1>
+<div class="tile is-ancestor">
 
-<strong>Profile Picture:</strong>
-<%= image_tag @user.image.thumb %>
+  <div class="tile is-6">
+    <!-- 1/2 -->
+    <p class="title"><p>Upcoming Events:</p>
+      <ul>
+        <% @user.events.each do |event| %>
+          <li><%= link_to event.name, event_path(event) %></li><br>
+        <% end %>
+      </ul>
 
-<p>Your Saved Events: </p>
-  <ul>
-    <% @user.events.each do |event| %>
-      <li><%= link_to event.name, event_path(event) %></li>
-    <% end %>
-  </ul>
+      <br></br>
 
-<br></br>
+      <%= link_to "Search for an event near you!", events_path %><br>
 
-<%= link_to "Search for an event near you!", events_path %><br>
+  </div>
 
-
-<a class="button is-primary is-outlined">
-  <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-    <input type=submit value='Logout'>
-  <% end %>
-</a>
+  <div class="tile">
+    <!-- This tile will take the rest: 1/2 -->
+    <p class="title"><%= @user.name.titleize %>'s Profile Page</p>
+    <p class="subtitle"><strong>Profile Picture:</strong></p>
+    <div class="content">
+      <%= image_tag @user.image.thumb.url %>
+      <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+        <div class="control">
+          <button class="button is-primary is-outlined">Logout</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
