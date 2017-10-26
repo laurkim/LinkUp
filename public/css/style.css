@@ -11,6 +11,10 @@ div.heart {
   max-height: auto;
 }
 
+div.is-ancestor {
+  justify-content :center;
+}
+
 .red {
   color: red;
 }
@@ -20,6 +24,7 @@ div.heart {
   margin: 0 auto;
 }
 
-div.is-ancestor {
-  justify-content :center;
+.ext_button_padding {
+  margin-left: 10px;
+  margin-right: 10px;
 }

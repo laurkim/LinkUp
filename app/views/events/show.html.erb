@@ -1,64 +1,119 @@
-<nav class="breadcrumb" aria-label="breadcrumbs">
-  <ul>
-    <li><%= link_to "Back to Search Results", search_results_path %></li>
-    <li><%= link_to "Create a new search", events_path %></li>
-  </ul>
-</nav>
+<div class="level"></div>
 
 <div class="tile is-ancestor">
   <div class="tile is-4 is-parent is-vertical">
     <!-- 1/3 -->
+
     <div class="tile is-child">
-      <img src="<%= @event.image_url %>" alt="">
-      <h2><%= @event.name %></h2>
-      <h4>Start Time: <%= @event.start_time.strftime("%a - %m/%d/%Y - %I:%M %p") %></h3>
-      <h4>End Time: <%= @event.end_time.strftime("%a - %m/%d/%Y - %I:%M %p") %></h3>
+      <div class="tile is-child">
+        <div class="level">
+          <img src="<%= @event.image_url %>" alt="">
+        </div>
+        <div class="level">
+          <label class="label is-size-4"><%= @event.name %></label>
+        </div>
+      </div>
+      <!-- end of image and label block -->
 
-      <br>
+      <div class="level is-marginless">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Start Time</p>
+            <p class="title"><%= @event.start_time.strftime("%m/%d") %></p>
+            <p class="heading has-text-weight-light is-size-7"><%= @event.start_time.strftime("%I:%M %p") %></p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">End Time</p>
+            <p class="title"><%= @event.end_time.strftime("%m/%d") %></p>
+            <p class="heading has-text-weight-light is-size-7"><%= @event.end_time.strftime("%I:%M %p") %></p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Following</p>
+            <p class="title"><%= @event.users.count %></p>
+            <p class="heading has-text-weight-light is-size-7">GROUPIES</p>
+          </div>
+        </div>
+      </div>
+      <!-- end of metrics block -->
 
-      <h4>Description:</h4>
+      <div class="level">
+        <div class="level-item is-grouped">
+          <div class="control ext_button_padding">
+            <%= form_tag user_event_path(session[:user_id]) do %>
+              <%= hidden_field_tag "event_id", @event.id %>
+                <button class="button is-primary is-small">
+                  <span class="icon is-small">
+                    <i class="fa fa-plus-circle"></i>
+                  </span>
+                  <span>Add To Profile</span>
+                </button>
+            <% end %>
+          </div>
+
+          <div class="control ext_button_padding">
+            <a href="<%= @event.url %>" class="button is-primary is-small">
+              <span class="icon is-small">
+                <i class="fa fa-share-alt-square"></i>
+              </span>
+              <span>Link to EventBrite</span>
+            </a>
+          </div>
+
+          <div class="control ext_button_padding">
+            <a href="http://www.google.com" class="button is-primary is-small">
+              <span class="icon is-small">
+                <i class="fa fa-envelope-open-o"></i>
+              </span>
+              <span>Send Email</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- end of buttons div -->
+    </div>
+
+    <div class="tile is-child">
+      <label class="label">Description:</label>
       <p><%= @event.description %></p>
-
-      <h4><%= link_to "Link to EventBrite Page", @event.url %></h4>
-      <%= form_tag user_event_path do %>
-        <%= hidden_field_tag "event_id", @event.id %>
-        <%= submit_tag "Add Event to Profile" %>
-      <% end %>
     </div>
 
   </div>
   <!-- end of left tile stack -->
 
   <div class="tile is-6 is-parent is-vertical">
-    <div class="tile is-child is-vertical">
+    <div class="level is-marginless">
+      <label class="label">Post a New Comment!</label>
+    </div>
 
-      <!-- old form -->
+    <div class="is-child is-vertical">
       <%= form_tag comments_path do %>
         <%= hidden_field_tag :'comment[user_id]', session[:user_id] %>
         <%= hidden_field_tag :'comment[event_id]', @event.id %>
         <p>
-          <label class="label">New Comment</label>
           <input type="text" class="textarea" name='comment[content]' rows="2" placeholder="Write a new comment here.">
         </p>
         <div class="control">
           <button class="button is-primary is-small">Submit</button>
         </div>
       <% end %>
-
     </div>
     <!-- end of comment text box -->
 
-    <label class="label">Comments</label>
-    <!-- This tile will take the rest: 2/3 -->
+    <div class="level is-marginless">
+      <label class="label">Comments</label>
+    </div>
     <% if !(@comments.empty?) %>
       <% @comments.each do |comment| %>
-        <div class="tile is-child is-vertical">
+        <div class="is-child is-vertical">
 
           <div class="heart">
             <%= link_to content_tag(:span), { controller: "likes", action: "create", like: { user_id: session[:user_id], comment_id: comment.id, active: 'true'}, event_id: @event.id }, method: "post", class: "fa fa-heart #{check_if_clicked(comment, session[:user_id])}" %>
 
             <b><%= count_likes(comment.likes) %></b>
-
           </div>
 
           <div class="content">
@@ -68,8 +123,13 @@
           </div>
 
         </div>
+        <!-- end of single comment box tile -->
       <% end %>
       <!-- end of comment iteration -->
+    <% else %>
+      <div class="level">
+        <label class="label has-text-weight-light">Woof. No comments at the moment.</label>
+      </div>
     <% end %>
     <!-- end of if statement -->
 
