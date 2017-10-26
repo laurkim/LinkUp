@@ -21,3 +21,8 @@ div.content {
 .red {
   color: red;
 }
+
+#inner {
+  width: 50%;
+  margin: 0 auto;
+}

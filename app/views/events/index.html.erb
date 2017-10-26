@@ -1,5 +1,7 @@
-<h1>Event Index</h1>
 
+
+
+<!--
 <div class="events_form">
   <h4>Event Form</h4>
 
@@ -33,4 +35,71 @@
       <%= submit_tag "Submit" %>
     <p>
   <% end %>
+</div>
+-->
+
+<div class="tile is-ancestor">
+
+  <div class="tile is-parent">
+
+
+  </div>
+  <div class="tile is-parent">
+
+    <div class="tile is-child">
+      <article class= "tile is-child notification is-white">
+        <div class = "level"><p>Search for an Event!</p></div>
+
+
+    <div class="tile is-vertical">
+
+    <div class="field">
+      <label class="label">Search Keyword</label>
+      <div class="control">
+        <input type="text" name="event[search_keyword]" id="event_search_keyword" class= "input">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Zip Code</label>
+      <div class="control">
+        <input type="text" name="event[zipcode]" id="event_zipcode" class= "input">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Radius (Miles)</label>
+      <div class="control">
+        <input type="text" name="event[radius]" id="event_radius" class= "input">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="checkbox">
+        Only Free Events? <%= check_box_tag :'event[free]' %>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="">When?</label>
+        <select name="event[start_date]" id="event_start_date"><option value="" label=" "></option><option value="This Week">This Week</option>
+        <option value="Next Week">Next Week</option>
+        <option value="etc.">etc.</option></select>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= submit_tag "Submit" %>
+    </div>
+    </div>
+  </article>
+  </div>
+  </div>
+  <div class="tile is-parent">
+
+  </div>
+
 </div>
