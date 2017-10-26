@@ -49,6 +49,11 @@ div.content {
    background-position: center center;
  }
 
+ .wat {
+   min-width: 175px;
+   max-width: 175px;
+ }
+
  #inner {
    width: 50%;
    margin: 0 auto;
