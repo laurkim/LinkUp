@@ -1,8 +1,6 @@
 div {
   display: inline-block;
   margin: 5px 5px;
-  text-align: center;
-  border: 0.2em solid rgb(209, 231, 255);
 }
 
 div.header {
@@ -30,29 +28,25 @@ div.event_comments {
   background-color: linen;
 }
 
-div.single {
-  display: block;
-  text-align: left;
-  max-width: 100%;
-  background-color: linen;
-}
-
-div.upvote {
+div.heart {
   display: inline-block;
   vertical-align: top;
   text-align: left;
+  min-width: 35px;
+  max-height: auto;
+}
+
+div.content {
+  display: inline-block;
+  text-align: left;
+  max-width: 600px;
+  background-color: linen;
 }
 
 .orange {
   color: orange;
 }
 
-div.content {
-  display: inline-block;
-  text-align: left;
-  max-width: 500px;
-  background-color: linen;
-}
 
 img {
   display: inline-block;

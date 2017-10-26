@@ -24,7 +24,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @comments = @event.comments.sort_by { |comment| comment.created_at }
+    @comments = @event.comments.sort { |a, b| b.created_at <=> a.created_at }
   end
 
   def search
