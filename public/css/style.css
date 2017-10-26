@@ -14,3 +14,7 @@ div.heart {
 .red {
   color: red;
 }
+
+div.is-ancestor {
+  justify-content :center;
+}

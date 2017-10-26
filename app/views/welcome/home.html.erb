@@ -14,15 +14,19 @@
 
     <article>
       <h1>Welcome to LINKUP<br /><span><%= form_for @user, url: login_path, method: :post do |f| %>
-        <%= f.label :username %><br>
-        <%= f.text_field :username %><br>
+        <br>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
 
-        <%= f.label :password %><br>
-        <%= f.password_field :password %><br>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
 
         <%= f.submit "Log In" %>
-        <br>
-        Or <%= link_to(controller: 'users', action: 'new') { 'Sign Up' } %>
+
+        <br></br>
+        Don't have an account? <br>
+        <%= link_to(controller: 'users', action: 'new') { 'Sign Up' } %>
+
       <% end %>
 </span></h1>
     </article>
