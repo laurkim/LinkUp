@@ -4,4 +4,10 @@ class WelcomeController < ApplicationController
   def home
     render 'welcome/home', layout: false
   end
+
+  def contact
+  end
+
+  def about
+  end
 end

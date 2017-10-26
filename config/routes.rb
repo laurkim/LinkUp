@@ -20,5 +20,8 @@ Rails.application.routes.draw do
 
   post '/likes', to: 'likes#create'
 
+  get '/about', to: 'welcome#about', as: 'about'
+  get '/contact', to: 'welcome#contact', as: 'contact'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
