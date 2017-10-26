@@ -1,14 +1,24 @@
-<div class="header">
-  <h1>Results from Event Query</h1>
-</div>
+
 
 <% @matching_events.each do |event| %>
 
-  <div class="search_results">
+
+
+<div class="card">
+
+  <div class="card-image">
     <img src="<%= event.image_url %>">
-    <h5><%= link_to event.name, event_path(event.id) %></h5>
-    <h5><%= event.start_time.strftime("%a - %m/%d/%Y - %I:%M %p") %></h5>
-    <h5>Solo Attendees: <%= "#{event.users.count}" %></h5>
   </div>
+    <div class="card-header">
+      <h5><%= link_to event.name[0..40].concat('...'), event_path(event.id) %></h5>
+    </div>
+    <div class="card-content">
+      <h5><%= event.start_time.strftime("%a - %m/%d/%Y - %I:%M %p") %></h5>
+      <h5>Solo Attendees: <%= "#{event.users.count}" %></h5>
+    </div>
+
+    <!-- end of card -->
+  </div>
+
 
 <% end %>
