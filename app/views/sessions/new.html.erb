@@ -1,11 +1,47 @@
-<%= form_for @user, url: login_path, method: :post do |f| %>
-  <%= f.label :username %><br>
-  <%= f.text_field :username %><br>
+<div class="tile is-ancestor">
 
-  <%= f.label :password %><br>
-  <%= f.password_field :password %><br>
+  <!-- First 1/3 Column -->
+  <!-- Intentionally blank -->
+  <div class="tile is-parent">
+  </div>
 
-  <%= f.submit "Log In" %>
-  <br>
-  Or <%= link_to(controller: 'users', action: 'new') { 'Sign Up' } %>
-<% end %>
+  <!-- Middle 2/3 Column -->
+  <!-- Form to Create Account -->
+  <div class="tile is-parent">
+    <div class="tile is-child">
+      <article class="tile is-child notification is-white">
+        <p class="title is-2 is-spaced">Log In</p>
+
+        <div class="field">
+          <%= form_for @user, url: login_path, method: :post do |f| %>
+
+          <label class="label">Username</label>
+          <div class="control">
+            <input class="input" type="text" name="user[username]" id="user_username" placeholder="Username">
+          </div>
+
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" name="user[password]" id="user_password" placeholder="Password">
+          </div>
+
+          <div class="label"></div>
+
+          <div class="control">
+            <button class="button is-primary">Log In</button>
+          </div>
+
+          <% end %>
+        </div>
+
+      </article>
+    </div>
+      <!-- End of middle create account box -->
+  </div>
+
+    <!-- Last 3/3 Column -->
+    <!-- Intentionally blank -->
+  <div class="tile is-parent">
+  </div>
+
+</div>

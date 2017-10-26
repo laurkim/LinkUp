@@ -19,3 +19,7 @@ div.heart {
   width: 50%;
   margin: 0 auto;
 }
+
+div.is-ancestor {
+  justify-content :center;
+}
