@@ -53,6 +53,7 @@
 
     <div class="tile is-vertical">
 
+    <%= form_tag events_path do %>
     <div class="field">
       <label class="label">Search Keyword</label>
       <div class="control">
@@ -94,7 +95,9 @@
     <div class="field">
       <%= submit_tag "Submit" %>
     </div>
+
     </div>
+    <% end %>
   </article>
   </div>
   </div>
