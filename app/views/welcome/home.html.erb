@@ -13,7 +13,18 @@
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
     <article>
-      <h1>Welcome to LINKUP<br /><span><a href="<%= login_path %>" target="_blank">Log In</a></span></h1>
+      <h1>Welcome to LINKUP<br /><span><%= form_for @user, url: login_path, method: :post do |f| %>
+        <%= f.label :username %><br>
+        <%= f.text_field :username %><br>
+
+        <%= f.label :password %><br>
+        <%= f.password_field :password %><br>
+
+        <%= f.submit "Log In" %>
+        <br>
+        Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
+      <% end %>
+</span></h1>
     </article>
 
   </body>
