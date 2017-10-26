@@ -28,3 +28,24 @@ div.is-ancestor {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.round {
+  border-radius: 100%;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+ }
+
+ .round img {
+   width: 100%;
+   height: 100%;
+   -webkit-border-radius: 100%;
+   -webkit-background-clip: padding-box;
+   -moz-border-radius: 100%;
+   -moz-background-clip: padding;
+   border-radius: 100%;
+   background-clip: padding-box;
+   float: left;
+   background-size: cover;
+   background-position: center center;
+ }

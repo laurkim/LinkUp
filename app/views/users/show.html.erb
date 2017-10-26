@@ -6,11 +6,14 @@
       <!-- Content for right tile -->
       <div class="level"></div>
       <p class="title"><%= @user.name.titleize %>'s Profile Page</p>
+      <div class="level"></div>
       <p class="subtitle"><strong>Name: </strong><%= @user.name.titleize %></p>
       <p class="subtitle"><strong>Profile Picture:</strong></p>
       <!-- Div to nest user profile image under profile picture subtitle -->
       <div class="content">
-        <%= image_tag @user.image.thumb.url %>
+        <div class="round" style="text-align: center;">
+          <img src="<%= @user.image.thumb.url  %>" alt="Profile Picture">
+        </div>
       </div>
       <!-- Log out form -->
       <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
