@@ -21,9 +21,15 @@ class UsersController < ApplicationController
   end
 
   def event
-    EventUser.create(event_id: params[:event_id], user_id: session[:user_id])
+    EventUser.find_or_create_by(event_id: params[:event_id], user_id: session[:user_id])
     @user = User.find_by(id: session[:user_id])
     redirect_to user_path(@user)
+  end
+
+  def delete_association
+    association = EventUser.find_by(user_id: params[:id], event_id: params[:event_id])
+    association.destroy
+    redirect_to user_path(params[:id])
   end
 
   private
@@ -33,7 +39,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :username, :password, :password_confirmation, :image, :remove_image)
+      params.require(:user).permit(:name, :username, :password, :password_confirmation, :image, :remove_image, :event_id)
     end
 
 end

@@ -15,13 +15,12 @@ div.is-ancestor {
   justify-content :center;
 }
 
-.red {
-  color: red;
+div.content {
+  max-width: 550px;
 }
 
-#inner {
-  width: 50%;
-  margin: 0 auto;
+.red {
+  color: red;
 }
 
 .ext_button_padding {
@@ -48,4 +47,9 @@ div.is-ancestor {
    float: left;
    background-size: cover;
    background-position: center center;
+ }
+
+ #inner {
+   width: 50%;
+   margin: 0 auto;
  }
