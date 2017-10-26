@@ -17,3 +17,7 @@ div.content {
   max-width: 600px;
   background-color: linen;
 }
+
+.orange {
+  color: orange;
+}
