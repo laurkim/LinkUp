@@ -9,8 +9,12 @@ class User < ApplicationRecord
   has_many :comments
 
   has_many :likes
-  
+
   mount_uploader :image, ImageUploader
 
   has_secure_password
+
+  validates :name, presence: true
+  validates :username, presence: true, uniqueness: true
+  validates :password_digest, presence: true
 end
