@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
   def require_logged_in
     return redirect_to(controller: 'sessions', action: 'new') unless logged_in?
   end
+
+  def check_if_logged_in
+    if !(session.keys.include?(:user_id)) || session[:user_id].empty?
+      return redirect_to login_path
+    end
+  end
 end

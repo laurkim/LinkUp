@@ -42,10 +42,4 @@ class EventsController < ApplicationController
       params.require(:event).permit(:search_keyword, :zipcode, :radius, :free, :start_date)
     end
 
-    def check_if_logged_in
-      if !(session.keys.include?(:user_id)) || session[:user_id].empty?
-        return redirect_to login_path
-      end
-    end
-
 end
