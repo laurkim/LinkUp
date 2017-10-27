@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @distance = (1..15).to_a
-    @timing = ["This Week", "Next Week", "etc."]
+    @timing = ["Today", "Tomorrow", "This Week", "Next Week", "This Month", "Next Month"]
   end
 
   def create

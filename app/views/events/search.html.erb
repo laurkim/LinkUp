@@ -1,24 +1,46 @@
+<div class="level"></div>
 
+<div class="tile is-ancestor">
+  <div class="tile is-parent is-11">
+    <div class="tile is-child">
 
-<% @matching_events.each do |event| %>
+      <% @matching_events.each do |event| %>
+        <div class="card">
+          <div class="card-image">
+            <img src="<%= event.image_url %>">
+          </div>
 
+          <div class="card-header">
+            <label class="is-5"><%= link_to event.name[0..40].concat('...'), event_path(event.id) %></label>
+          </div>
 
+          <div class="card-content" style="padding:0.5rem 1.5rem ">
+            <div class="level is-marginless">
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">Date</p>
+                  <p class="title"><%= event.start_time.strftime("%m/%d") %></p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">Start Time</p>
+                  <p class="title"><%= event.start_time.strftime("%l:%M %p") %></p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">Groupies</p>
+                  <p class="title"><%= event.users.count %></p>
+                </div>
+              </div>
+            </div>
 
-<div class="card">
+          </div>
+        <!-- end of card -->
+        </div>
+      <% end %>
 
-  <div class="card-image">
-    <img src="<%= event.image_url %>">
-  </div>
-    <div class="card-header">
-      <h5><%= link_to event.name[0..40].concat('...'), event_path(event.id) %></h5>
     </div>
-    <div class="card-content">
-      <h5><%= event.start_time.strftime("%a - %m/%d/%Y - %I:%M %p") %></h5>
-      <h5>Solo Attendees: <%= "#{event.users.count}" %></h5>
-    </div>
-
-    <!-- end of card -->
   </div>
-
-
-<% end %>
+</div>

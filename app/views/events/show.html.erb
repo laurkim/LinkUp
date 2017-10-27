@@ -20,14 +20,14 @@
           <div>
             <p class="heading">Start Time</p>
             <p class="title"><%= @event.start_time.strftime("%m/%d") %></p>
-            <p class="heading has-text-weight-light is-size-7"><%= @event.start_time.strftime("%I:%M %p") %></p>
+            <p class="heading has-text-weight-light is-size-7"><%= @event.start_time.strftime("%l:%M %p") %></p>
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
             <p class="heading">End Time</p>
             <p class="title"><%= @event.end_time.strftime("%m/%d") %></p>
-            <p class="heading has-text-weight-light is-size-7"><%= @event.end_time.strftime("%I:%M %p") %></p>
+            <p class="heading has-text-weight-light is-size-7"><%= @event.end_time.strftime("%l:%M %p") %></p>
           </div>
         </div>
         <div class="level-item has-text-centered">

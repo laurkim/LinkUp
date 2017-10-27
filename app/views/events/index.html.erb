@@ -40,69 +40,69 @@
 
 <div class="tile is-ancestor">
 
-  <div class="tile is-parent">
-
-
-  </div>
-  <div class="tile is-parent">
+  <!-- parent tile -->
+  <div class="tile is-parent is-4">
 
     <div class="tile is-child">
       <article class= "tile is-child notification is-white">
         <p class="title is-3">Search for an Event!</p>
 
+        <div class="tile is-vertical">
 
-    <div class="tile is-vertical">
+          <!-- beginning of form -->
+          <%= form_tag events_path do %>
+            <div class="field">
+              <label class="label">Search Keyword</label>
+              <div class="control">
+                <input type="text" name="event[search_keyword]" id="event_search_keyword" class= "input" placeholder="Keyword">
+              </div>
+            </div>
 
-    <%= form_tag events_path do %>
-    <div class="field">
-      <label class="label">Search Keyword</label>
-      <div class="control">
-        <input type="text" name="event[search_keyword]" id="event_search_keyword" class= "input">
-      </div>
+            <div class="field">
+              <label class="label">Zip Code</label>
+              <div class="control">
+                <input type="text" name="event[zipcode]" id="event_zipcode" class= "input" placeholder="Zip Code">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Radius (Miles)</label>
+              <div class="control">
+                <input type="text" name="event[radius]" id="event_radius" class= "input" placeholder="Radius">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">When?
+              <div class="control">
+                <div class="select is-small">
+                  <%= select_tag :'event[start_date]', options_for_select(@timing), include_blank: true %>
+                </div>
+              </div>
+              </label>
+            </div>
+            <br>
+
+            <div class="field">
+              <label class="label">Only Free Events?
+                <div class="control">
+                  <%= check_box_tag :'event[free]' %>
+                </div>
+              </label>
+            </div>
+            <br>
+
+            <div class="control">
+              <input type="submit" class="button is-primary is-pulled-right" name="commit" value="Submit" data-disable-with="Submit">
+            </div>
+
+          <% end %>
+          <!-- end of form -->
+
+        </div>
+      </article>
     </div>
-
-    <div class="field">
-      <label class="label">Zip Code</label>
-      <div class="control">
-        <input type="text" name="event[zipcode]" id="event_zipcode" class= "input">
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="label">Radius (Miles)</label>
-      <div class="control">
-        <input type="text" name="event[radius]" id="event_radius" class= "input">
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <label class="checkbox">
-        Only Free Events? <%= check_box_tag :'event[free]' %>
-        </label>
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <label class="">When?</label>
-        <select name="event[start_date]" id="event_start_date"><option value="" label=" "></option><option value="This Week">This Week</option>
-        <option value="Next Week">Next Week</option>
-        <option value="etc.">etc.</option></select>
-      </div>
-    </div>
-
-    <div class="field">
-      <%= submit_tag "Submit" %>
-    </div>
-
-    </div>
-    <% end %>
-  </article>
   </div>
-  </div>
-  <div class="tile is-parent">
-
-  </div>
+  <!-- end of parent tile -->
 
 </div>
