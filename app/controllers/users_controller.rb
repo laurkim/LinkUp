@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @events = @user.events.sort {|a,b| a.start_time <=> b.start_time }
   end
 
   def event
