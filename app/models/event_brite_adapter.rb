@@ -39,7 +39,7 @@ class EventBriteAdapter
       hash[:description] = event_hash["description"]["text"]
       hash[:start_time] = event_hash["start"]["local"]
       hash[:end_time] = event_hash["end"]["local"]
-      hash[:image_url] = ( event_hash["logo"] == nil ? "https://i.imgur.com/iF53eF0.jpg" : event_hash["logo"]["url"] )
+      hash[:image_url] = ( event_hash["logo"] == nil ? "https://i.imgur.com/GNIO7Zt.jpg" : event_hash["logo"]["url"] )
       hash[:free] = event_hash["is_free"]
 
       @venue_id = event_hash["venue_id"]

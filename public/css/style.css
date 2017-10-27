@@ -58,3 +58,11 @@ div.content {
    width: 50%;
    margin: 0 auto;
  }
+
+.background-purple {
+   background-color: #8493E8;
+ }
+
+.background-white {
+  background-color: white;
+}
