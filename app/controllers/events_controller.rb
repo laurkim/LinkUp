@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :check_if_logged_in, only [:show]
   before_action :set_event, only: [:show]
 
   def index
@@ -39,6 +40,12 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:search_keyword, :zipcode, :radius, :free, :start_date)
+    end
+
+    def check_if_logged_in
+      if !(session.keys.include?(:user_id)) || session[:user_id].empty?
+        return redirect_to login_path
+      end
     end
 
 end
