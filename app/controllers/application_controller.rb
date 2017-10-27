@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   def check_if_logged_in
-    if !(session.keys.include?(:user_id)) || session[:user_id].empty?
-      return redirect_to login_path
+    if !(session.keys.include?('user_id')) || session[:user_id] == nil
+      redirect_to login_path
     end
   end
 end

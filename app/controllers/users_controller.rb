@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :check_if_logged_in, only: [:show]
   before_action :set_user, only: [:show, :event]
+  before_action :check_if_logged_in, only: [:show]
 
   def index
     @users = User.all

@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :check_if_logged_in, only: [:show]
   before_action :set_event, only: [:show]
+  before_action :check_if_logged_in, only: [:show]
 
   def index
     @distance = (1..15).to_a
