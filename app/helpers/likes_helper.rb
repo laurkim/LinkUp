@@ -4,7 +4,7 @@ module LikesHelper
       return nil
     else
       like = comment_obj.likes.select {|like| like.user_id == user_id}
-      return 'red' if like[0].active == true
+      return 'red' if !(like.empty?) && like[0].active == true
     end
   end
 
