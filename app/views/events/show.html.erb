@@ -111,7 +111,7 @@
         <div class="is-child is-vertical">
 
           <div class="heart">
-            <%= link_to content_tag(:span), { controller: "likes", action: "create", like: { user_id: session[:user_id], comment_id: comment.id, active: 'true'}, event_id: @event.id }, method: "post", class: "fa fa-heart #{check_if_clicked(comment, session[:user_id])}" %>
+            <%= link_to content_tag(:span), { controller: "likes", action: "create", like: { user_id: session[:user_id], comment_id: comment.id }, event_id: @event.id }, method: "post", class: "fa fa-heart #{check_if_clicked(comment, session[:user_id])}" %>
 
             <b><%= count_likes(comment.likes) %></b>
           </div>
